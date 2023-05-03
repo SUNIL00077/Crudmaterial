@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "studentdetails": [
+    {
+      "Email": "su@gmail.com",
+      "Password": "w3e456",
+      "id": 5
+    },
+    {
+      "Email": "ssdsd@wer.er",
+      "Password": "2345ert",
+      "id": 6
+    },
+    {
+      "Email": "asdfg@s.xcc",
+      "Password": "12345asdfghj",
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

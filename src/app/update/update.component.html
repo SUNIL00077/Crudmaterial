@@ -1,0 +1,39 @@
+<div class="container abc">
+  <h2>Login Form</h2>
+
+  <form [formGroup]="regiForm">
+      <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="Email" placeholder="{{data.email}}">
+          <mat-icon matSuffix>email</mat-icon>
+
+          <mat-error *ngIf="!regiForm.controls['Email'].valid && regiForm.controls['Email'].touched">
+              Email is required
+
+              <small *ngIf="!regiForm.controls['Email'].invalid && regiForm.controls['Email'].touched">
+                  Email is not correct
+              </small>
+          </mat-error>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="Password" [type]="hide ? 'password' : 'text'" placeholder="{{data.password}}">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+
+
+          <mat-error *ngIf="!regiForm.controls['Password'].valid && regiForm.controls['Password'].touched">
+              Password is required</mat-error>
+      </mat-form-field>
+      <div class="buttons">
+          <button mat-raised-button color="primary" [disabled]="regiForm.invalid" (click)="updateUser()">Update</button>&nbsp;
+          <button class="signIn" mat-raised-button >Sign In With
+              Google</button>
+      </div>
+  </form>
+
+</div>
+

@@ -1,0 +1,86 @@
+<div class="container">
+  <mat-card class="abc">
+      <div class="container">
+          <h2>Login Form</h2>
+
+          <form [formGroup]="regiForm">
+              <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="Email">
+                  <mat-icon matSuffix>email</mat-icon>
+
+                  <mat-error *ngIf="!regiForm.controls['Email'].valid && regiForm.controls['Email'].touched">
+                      Email is required
+
+                      <small *ngIf="!regiForm.controls['Email'].invalid && regiForm.controls['Email'].touched">
+                          Email is not correct
+                      </small>
+                  </mat-error>
+              </mat-form-field><br>
+              <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="Password" [type]="hide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+
+
+
+                  <mat-error *ngIf="!regiForm.controls['Password'].valid && regiForm.controls['Password'].touched">
+                      Password is required</mat-error>
+              </mat-form-field>
+              <div class="buttons">
+                  <button mat-raised-button color="primary" [disabled]="regiForm.invalid" (click)="loginUser()">Submit</button>&nbsp;
+                  
+              </div>
+          </form>
+      </div>
+  </mat-card>
+
+</div>
+<!--
+<table mat-table [dataSource]="loginDetails" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.Password}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+ -->
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Email id</th>
+      <th scope="col">Password</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of loginDetails">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.Email}}</td>
+      <td>{{item.Password}}</td>
+      <td> <button mat-raised-button color="primary" (click)="viewDetails(item)">View</button></td>
+        <td><button mat-raised-button color="accent" (click)="updateDetails(item)">Update</button></td>
+       <td><button mat-raised-button color="warn" (click)="deleteStudent(item)">Delete</button></td>
+    </tr>
+     </tbody>
+</table>
